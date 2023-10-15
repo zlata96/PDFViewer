@@ -218,7 +218,9 @@ struct ContentView: View {
                                 .resizable()
                                 .frame(width: 80, height: 120)
                             Text("стр. \(result.pageIndex + 1)")
+                                .font(.caption)
                         }
+                        .shadow(radius: 6)
                         .padding(.horizontal)
                         .onTapGesture {
                             DispatchQueue.main.async {
@@ -227,7 +229,7 @@ struct ContentView: View {
                         }
                     }
                 }
-                .padding(.horizontal)
+                .padding()
             }
         }
     }
