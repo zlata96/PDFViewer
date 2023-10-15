@@ -22,6 +22,7 @@ struct AppReducer: Reducer {
         case pdfLoadingStarted
         case pdfLoadingCompleted(PDFDocument?)
         case pdfLoadingFailed
+        
         case updateSearchText(String)
         case beginSearch
         case appendSearchResult(PDFSearchResult)

@@ -15,7 +15,6 @@
 		CE0CD78A2ADBEF0100DE4B72 /* PDFViewerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CD7892ADBEF0100DE4B72 /* PDFViewerUITestsLaunchTests.swift */; };
 		F10E463B2ADBF4FA00DC4CC7 /* SearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10E463A2ADBF4FA00DC4CC7 /* SearchResultsView.swift */; };
 		F10E463D2ADBF56500DC4CC7 /* PDFViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10E463C2ADBF56500DC4CC7 /* PDFViewWrapper.swift */; };
-		F10E463F2ADBF58900DC4CC7 /* PDFManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10E463E2ADBF58900DC4CC7 /* PDFManager.swift */; };
 		F10E46412ADBF5B200DC4CC7 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10E46402ADBF5B200DC4CC7 /* AppReducer.swift */; };
 		F10E46432ADBF5D000DC4CC7 /* SearchReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10E46422ADBF5D000DC4CC7 /* SearchReducer.swift */; };
 		F10E46462ADBF64800DC4CC7 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = F10E46452ADBF64800DC4CC7 /* ComposableArchitecture */; };
@@ -51,7 +50,6 @@
 		CE0CD7892ADBEF0100DE4B72 /* PDFViewerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F10E463A2ADBF4FA00DC4CC7 /* SearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
 		F10E463C2ADBF56500DC4CC7 /* PDFViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewWrapper.swift; sourceTree = "<group>"; };
-		F10E463E2ADBF58900DC4CC7 /* PDFManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFManager.swift; sourceTree = "<group>"; };
 		F10E46402ADBF5B200DC4CC7 /* AppReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
 		F10E46422ADBF5D000DC4CC7 /* SearchReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchReducer.swift; sourceTree = "<group>"; };
 		F10E46472ADBF9C900DC4CC7 /* test.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = test.pdf; sourceTree = "<group>"; };
@@ -108,7 +106,6 @@
 			children = (
 				CE0CD76C2ADBEEFD00DE4B72 /* PDFViewerApp.swift */,
 				F10E463C2ADBF56500DC4CC7 /* PDFViewWrapper.swift */,
-				F10E463E2ADBF58900DC4CC7 /* PDFManager.swift */,
 				F10E46402ADBF5B200DC4CC7 /* AppReducer.swift */,
 				CE0CD76E2ADBEEFD00DE4B72 /* ContentView.swift */,
 				F10E463A2ADBF4FA00DC4CC7 /* SearchResultsView.swift */,
@@ -298,7 +295,6 @@
 				CE0CD76F2ADBEEFD00DE4B72 /* ContentView.swift in Sources */,
 				F10E46432ADBF5D000DC4CC7 /* SearchReducer.swift in Sources */,
 				F10E463D2ADBF56500DC4CC7 /* PDFViewWrapper.swift in Sources */,
-				F10E463F2ADBF58900DC4CC7 /* PDFManager.swift in Sources */,
 				F10E463B2ADBF4FA00DC4CC7 /* SearchResultsView.swift in Sources */,
 				CE0CD76D2ADBEEFD00DE4B72 /* PDFViewerApp.swift in Sources */,
 			);
