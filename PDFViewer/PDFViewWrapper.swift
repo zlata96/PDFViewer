@@ -20,7 +20,9 @@ struct PDFViewWrapper: UIViewRepresentable {
 
         if let pageIndex = currentPageIndex, let page = pdfDocument?.page(at: pageIndex) {
             pdfView.go(to: page)
-            currentPageIndex = nil // Reset after scrolling
+            DispatchQueue.main.async {
+                currentPageIndex = nil
+            }
         }
     }
 }

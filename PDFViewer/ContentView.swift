@@ -60,12 +60,17 @@ struct AppReducer: Reducer {
             state.pdfDocumentIsLoading = false
             return .none
         case let .updateSearchText(text):
-            state.isSearchResultsShown = true
-            state.searchText = text
-            return .run { send in
-                await send(.beginSearch)
+            if text.isEmpty {
+                return .none
+            } else {
+                state.isSearchResultsShown = true
+                state.searchText = text
+                return .run { send in
+                    await send(.beginSearch)
+                }
+                .cancellable(id: "search")
+                .debounce(id: "search", for: 0.3, scheduler: DispatchQueue.main)
             }
-            .debounce(id: "search", for: 0.3, scheduler: DispatchQueue.main)
         case .beginSearch:
             state.isSearching = true
             state.searchResults = []
@@ -80,6 +85,8 @@ struct AppReducer: Reducer {
             state.searchText = ""
             return .none
         case let .selectSearchResult(result):
+            state.searchText = ""
+            state.isSearching = false
             state.isSearchResultsShown = false
             state.currentPageIndex = result.pageIndex
             return .none
@@ -103,7 +110,7 @@ struct AppReducer: Reducer {
                     let thumbnail = page.thumbnail(of: CGSize(width: 40, height: 60), for: .cropBox)
                     await send(.appendSearchResult(PDFSearchResult(pageIndex: i, thumbnail: thumbnail)))
                 }
-                try await Task.sleep(nanoseconds: 1_000_000_000)
+//                try await Task.sleep(nanoseconds: 1_000_000_000)
             }
 
             await send(.endSearch)
@@ -212,7 +219,9 @@ struct ContentView: View {
                         }
                         .padding(.horizontal)
                         .onTapGesture {
-                            viewStore.send(.selectSearchResult(result))
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                viewStore.send(.selectSearchResult(result))
+                            }
                         }
                     }
                 }
