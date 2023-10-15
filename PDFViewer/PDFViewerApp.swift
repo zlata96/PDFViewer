@@ -1,17 +1,18 @@
-//
-//  PDFViewerApp.swift
-//  PDFViewer
-//
-//  Created by Злата Гусева on 15.10.2023.
-//
+// PDFViewerApp.swift
+// PDFViewer. Created by Zlata Guseva.
 
+import ComposableArchitecture
 import SwiftUI
 
 @main
 struct PDFViewerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(store: Store(initialState: AppReducer.State()) {
+                AppReducer()
+                    ._printChanges()
+            }
+            )
         }
     }
 }

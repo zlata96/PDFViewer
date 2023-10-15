@@ -1,14 +1,9 @@
-//
-//  PDFViewerUITestsLaunchTests.swift
-//  PDFViewerUITests
-//
-//  Created by Злата Гусева on 15.10.2023.
-//
+// PDFViewerUITestsLaunchTests.swift
+// PDFViewer. Created by Zlata Guseva.
 
 import XCTest
 
 final class PDFViewerUITestsLaunchTests: XCTestCase {
-
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
     }
