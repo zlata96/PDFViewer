@@ -199,24 +199,24 @@ struct ContentView: View {
     var searchListView: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             ScrollView {
-                VStack {
+                LazyVGrid(
+                    columns: .init(repeating: GridItem(.flexible()), count: 3),
+                    spacing: 16
+                ) {
                     ForEach(viewStore.searchResults) { result in
-                        Group {
-                            HStack(spacing: 16) {
-                                Image(uiImage: result.thumbnail ?? UIImage())
-                                    .resizable()
-                                    .frame(width: 80, height: 120)
-                                Text("Страница \(result.pageIndex + 1)")
-                                Spacer()
-                            }
+                        VStack {
+                            Image(uiImage: result.thumbnail ?? UIImage())
+                                .resizable()
+                                .frame(width: 80, height: 120)
+                            Text("стр. \(result.pageIndex + 1)")
                         }
                         .padding(.horizontal)
                         .onTapGesture {
                             viewStore.send(.selectSearchResult(result))
                         }
-                        Divider()
                     }
                 }
+                .padding(.horizontal)
             }
         }
     }
