@@ -16,12 +16,13 @@ struct PDFViewWrapper: UIViewRepresentable {
     }
 
     func updateUIView(_ pdfView: PDFView, context: Context) {
-        pdfView.document = pdfDocument
+        if pdfView.document != pdfDocument {
+            pdfView.document = pdfDocument
+        }
 
         if let pageIndex = currentPageIndex, let page = pdfDocument?.page(at: pageIndex) {
-            pdfView.go(to: page)
             DispatchQueue.main.async {
-                currentPageIndex = nil
+                pdfView.go(to: page)
             }
         }
     }

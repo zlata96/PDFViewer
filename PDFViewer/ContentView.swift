@@ -82,6 +82,7 @@ struct AppReducer: Reducer {
             state.isSearching = false
             return .none
         case .clearSearchText:
+            state.isSearchResultsShown = false
             state.searchText = ""
             return .none
         case let .selectSearchResult(result):
@@ -110,7 +111,8 @@ struct AppReducer: Reducer {
                     let thumbnail = page.thumbnail(of: CGSize(width: 40, height: 60), for: .cropBox)
                     await send(.appendSearchResult(PDFSearchResult(pageIndex: i, thumbnail: thumbnail)))
                 }
-//                try await Task.sleep(nanoseconds: 1_000_000_000)
+                // TODO:
+                // try await Task.sleep(nanoseconds: 1_000_000_000)
             }
 
             await send(.endSearch)
@@ -219,7 +221,7 @@ struct ContentView: View {
                         }
                         .padding(.horizontal)
                         .onTapGesture {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                            DispatchQueue.main.async {
                                 viewStore.send(.selectSearchResult(result))
                             }
                         }
