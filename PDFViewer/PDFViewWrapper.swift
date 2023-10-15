@@ -10,6 +10,7 @@ struct PDFViewWrapper: UIViewRepresentable {
 
     func makeUIView(context: Context) -> PDFView {
         let pdfView = PDFView()
+        pdfView.backgroundColor = .clear
         pdfView.autoScales = true
         return pdfView
     }

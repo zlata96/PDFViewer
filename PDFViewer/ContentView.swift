@@ -9,6 +9,7 @@ struct AppReducer: Reducer {
     struct State: Equatable {
         var pdfDocument: PDFDocument?
         var pdfDocumentIsLoading = false
+        var pdfDocumentIsLoaded = false
         var currentPageIndex: Int? = nil
 
         var searchText: String = ""
@@ -25,6 +26,7 @@ struct AppReducer: Reducer {
         case beginSearch
         case appendSearchResult(PDFSearchResult)
         case endSearch
+        case clearSearchText
         case selectSearchResult(PDFSearchResult)
         case updateCurrentPageIndex(Int?)
     }
@@ -51,18 +53,19 @@ struct AppReducer: Reducer {
             }
         case let .pdfLoadingCompleted(pdfDocument):
             state.pdfDocumentIsLoading = false
+            state.pdfDocumentIsLoaded = true
             state.pdfDocument = pdfDocument
             return .none
         case .pdfLoadingFailed:
             state.pdfDocumentIsLoading = false
             return .none
         case let .updateSearchText(text):
-            // TODO: debounce
             state.isSearchResultsShown = true
             state.searchText = text
             return .run { send in
                 await send(.beginSearch)
             }
+            .debounce(id: "search", for: 0.3, scheduler: DispatchQueue.main)
         case .beginSearch:
             state.isSearching = true
             state.searchResults = []
@@ -72,6 +75,9 @@ struct AppReducer: Reducer {
             return .none
         case .endSearch:
             state.isSearching = false
+            return .none
+        case .clearSearchText:
+            state.searchText = ""
             return .none
         case let .selectSearchResult(result):
             state.isSearchResultsShown = false
@@ -113,7 +119,14 @@ struct ContentView: View {
             WithViewStore(store, observe: { $0 }) { viewStore in
                 ZStack {
                     VStack {
-                        searchView
+                        searchBarView
+                        if viewStore.isSearchResultsShown {
+                            searchListView
+                        } else {
+                            pdfView
+                        }
+                    }
+                    if !viewStore.pdfDocumentIsLoaded {
                         HStack {
                             Button("Загрузить PDF документ") {
                                 viewStore.send(.pdfLoadingStarted)
@@ -123,37 +136,6 @@ struct ContentView: View {
                                 ProgressView()
                             }
                         }
-                        if viewStore.isSearchResultsShown {
-                            ScrollView {
-                                VStack {
-                                    ForEach(viewStore.searchResults) { result in
-                                        Group {
-                                            HStack(spacing: 16) {
-                                                Image(uiImage: result.thumbnail ?? UIImage())
-                                                    .resizable()
-                                                    .frame(width: 80, height: 120)
-                                                Text("Страница \(result.pageIndex + 1)")
-                                                Spacer()
-                                            }
-                                        }
-                                        .padding(.horizontal)
-                                        .onTapGesture {
-                                            viewStore.send(.selectSearchResult(result))
-                                        }
-                                        Divider()
-                                    }
-                                }
-                            }
-                        } else {
-                            PDFViewWrapper(
-                                pdfDocument: viewStore.pdfDocument,
-                                currentPageIndex: viewStore.binding(
-                                    get: { $0.currentPageIndex },
-                                    send: AppReducer.Action.updateCurrentPageIndex
-                                )
-                            )
-                            .ignoresSafeArea()
-                        }
                     }
                 }
             }
@@ -162,7 +144,20 @@ struct ContentView: View {
         }
     }
 
-    var searchView: some View {
+    var pdfView: some View {
+        WithViewStore(store, observe: { $0 }) { viewStore in
+            PDFViewWrapper(
+                pdfDocument: viewStore.pdfDocument,
+                currentPageIndex: viewStore.binding(
+                    get: { $0.currentPageIndex },
+                    send: AppReducer.Action.updateCurrentPageIndex
+                )
+            )
+            .ignoresSafeArea()
+        }
+    }
+
+    var searchBarView: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             VStack {
                 HStack {
@@ -177,6 +172,20 @@ struct ContentView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
+                    .overlay(
+                        Group {
+                            if !viewStore.searchText.isEmpty {
+                                Button(action: {
+                                    viewStore.send(.clearSearchText)
+                                }) {
+                                    Image(systemName: "xmark.circle.fill")
+                                        .foregroundColor(.gray)
+                                        .padding(.trailing, 8)
+                                }
+                            }
+                        },
+                        alignment: .trailing
+                    )
                 }
                 if viewStore.isSearchResultsShown {
                     Text("Найдено \(viewStore.searchResults.count) совпадений")
@@ -184,6 +193,31 @@ struct ContentView: View {
                 }
             }
             .padding(.horizontal)
+        }
+    }
+
+    var searchListView: some View {
+        WithViewStore(store, observe: { $0 }) { viewStore in
+            ScrollView {
+                VStack {
+                    ForEach(viewStore.searchResults) { result in
+                        Group {
+                            HStack(spacing: 16) {
+                                Image(uiImage: result.thumbnail ?? UIImage())
+                                    .resizable()
+                                    .frame(width: 80, height: 120)
+                                Text("Страница \(result.pageIndex + 1)")
+                                Spacer()
+                            }
+                        }
+                        .padding(.horizontal)
+                        .onTapGesture {
+                            viewStore.send(.selectSearchResult(result))
+                        }
+                        Divider()
+                    }
+                }
+            }
         }
     }
 }
