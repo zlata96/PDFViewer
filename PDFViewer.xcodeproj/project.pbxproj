@@ -10,7 +10,6 @@
 		CE0CD76D2ADBEEFD00DE4B72 /* PDFViewerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CD76C2ADBEEFD00DE4B72 /* PDFViewerApp.swift */; };
 		CE0CD76F2ADBEEFD00DE4B72 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CD76E2ADBEEFD00DE4B72 /* ContentView.swift */; };
 		CE0CD7712ADBEF0000DE4B72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE0CD7702ADBEF0000DE4B72 /* Assets.xcassets */; };
-		CE0CD7742ADBEF0000DE4B72 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE0CD7732ADBEF0000DE4B72 /* Preview Assets.xcassets */; };
 		CE0CD77E2ADBEF0100DE4B72 /* PDFViewerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CD77D2ADBEF0100DE4B72 /* PDFViewerTests.swift */; };
 		CE0CD7882ADBEF0100DE4B72 /* PDFViewerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CD7872ADBEF0100DE4B72 /* PDFViewerUITests.swift */; };
 		CE0CD78A2ADBEF0100DE4B72 /* PDFViewerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CD7892ADBEF0100DE4B72 /* PDFViewerUITestsLaunchTests.swift */; };
@@ -45,7 +44,6 @@
 		CE0CD76C2ADBEEFD00DE4B72 /* PDFViewerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewerApp.swift; sourceTree = "<group>"; };
 		CE0CD76E2ADBEEFD00DE4B72 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CE0CD7702ADBEF0000DE4B72 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CE0CD7732ADBEF0000DE4B72 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CE0CD7792ADBEF0100DE4B72 /* PDFViewerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PDFViewerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE0CD77D2ADBEF0100DE4B72 /* PDFViewerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewerTests.swift; sourceTree = "<group>"; };
 		CE0CD7832ADBEF0100DE4B72 /* PDFViewerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PDFViewerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,17 +115,8 @@
 				F10E46422ADBF5D000DC4CC7 /* SearchReducer.swift */,
 				CE0CD7702ADBEF0000DE4B72 /* Assets.xcassets */,
 				F10E46472ADBF9C900DC4CC7 /* test.pdf */,
-				CE0CD7722ADBEF0000DE4B72 /* Preview Content */,
 			);
 			path = PDFViewer;
-			sourceTree = "<group>";
-		};
-		CE0CD7722ADBEF0000DE4B72 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				CE0CD7732ADBEF0000DE4B72 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		CE0CD77C2ADBEF0100DE4B72 /* PDFViewerTests */ = {
@@ -258,7 +247,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE0CD7742ADBEF0000DE4B72 /* Preview Assets.xcassets in Resources */,
 				CE0CD7712ADBEF0000DE4B72 /* Assets.xcassets in Resources */,
 				F10E46482ADBF9C900DC4CC7 /* test.pdf in Resources */,
 			);
@@ -475,7 +463,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"PDFViewer/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = B7MDH9MJ6R;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -509,7 +497,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"PDFViewer/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = B7MDH9MJ6R;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
