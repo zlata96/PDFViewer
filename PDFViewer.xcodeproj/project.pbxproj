@@ -10,9 +10,6 @@
 		CE0CD76D2ADBEEFD00DE4B72 /* PDFViewerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CD76C2ADBEEFD00DE4B72 /* PDFViewerApp.swift */; };
 		CE0CD76F2ADBEEFD00DE4B72 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CD76E2ADBEEFD00DE4B72 /* ContentView.swift */; };
 		CE0CD7712ADBEF0000DE4B72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE0CD7702ADBEF0000DE4B72 /* Assets.xcassets */; };
-		CE0CD77E2ADBEF0100DE4B72 /* PDFViewerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CD77D2ADBEF0100DE4B72 /* PDFViewerTests.swift */; };
-		CE0CD7882ADBEF0100DE4B72 /* PDFViewerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CD7872ADBEF0100DE4B72 /* PDFViewerUITests.swift */; };
-		CE0CD78A2ADBEF0100DE4B72 /* PDFViewerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CD7892ADBEF0100DE4B72 /* PDFViewerUITestsLaunchTests.swift */; };
 		CE3D720F2ADEC26C009CF844 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D720E2ADEC26C009CF844 /* AppReducer.swift */; };
 		F10E463B2ADBF4FA00DC4CC7 /* SearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10E463A2ADBF4FA00DC4CC7 /* SearchResultsView.swift */; };
 		F10E463D2ADBF56500DC4CC7 /* PDFViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10E463C2ADBF56500DC4CC7 /* PDFViewWrapper.swift */; };
@@ -44,10 +41,7 @@
 		CE0CD76E2ADBEEFD00DE4B72 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CE0CD7702ADBEF0000DE4B72 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE0CD7792ADBEF0100DE4B72 /* PDFViewerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PDFViewerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE0CD77D2ADBEF0100DE4B72 /* PDFViewerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewerTests.swift; sourceTree = "<group>"; };
 		CE0CD7832ADBEF0100DE4B72 /* PDFViewerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PDFViewerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE0CD7872ADBEF0100DE4B72 /* PDFViewerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewerUITests.swift; sourceTree = "<group>"; };
-		CE0CD7892ADBEF0100DE4B72 /* PDFViewerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		CE3D720E2ADEC26C009CF844 /* AppReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
 		F10E463A2ADBF4FA00DC4CC7 /* SearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
 		F10E463C2ADBF56500DC4CC7 /* PDFViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewWrapper.swift; sourceTree = "<group>"; };
@@ -85,8 +79,6 @@
 			isa = PBXGroup;
 			children = (
 				CE0CD76B2ADBEEFD00DE4B72 /* PDFViewer */,
-				CE0CD77C2ADBEF0100DE4B72 /* PDFViewerTests */,
-				CE0CD7862ADBEF0100DE4B72 /* PDFViewerUITests */,
 				CE0CD76A2ADBEEFD00DE4B72 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -106,37 +98,20 @@
 			children = (
 				CE0CD76C2ADBEEFD00DE4B72 /* PDFViewerApp.swift */,
 				CE43502C2ADD6B9300AB762D /* PDFLoaderModule */,
-				CE3D72102ADEC31D009CF844 /* PDWSearchingModule */,
+				CE3D72102ADEC31D009CF844 /* PDFSearchingModule */,
 				CE0CD7702ADBEF0000DE4B72 /* Assets.xcassets */,
 				F10E46472ADBF9C900DC4CC7 /* test.pdf */,
 			);
 			path = PDFViewer;
 			sourceTree = "<group>";
 		};
-		CE0CD77C2ADBEF0100DE4B72 /* PDFViewerTests */ = {
-			isa = PBXGroup;
-			children = (
-				CE0CD77D2ADBEF0100DE4B72 /* PDFViewerTests.swift */,
-			);
-			path = PDFViewerTests;
-			sourceTree = "<group>";
-		};
-		CE0CD7862ADBEF0100DE4B72 /* PDFViewerUITests */ = {
-			isa = PBXGroup;
-			children = (
-				CE0CD7872ADBEF0100DE4B72 /* PDFViewerUITests.swift */,
-				CE0CD7892ADBEF0100DE4B72 /* PDFViewerUITestsLaunchTests.swift */,
-			);
-			path = PDFViewerUITests;
-			sourceTree = "<group>";
-		};
-		CE3D72102ADEC31D009CF844 /* PDWSearchingModule */ = {
+		CE3D72102ADEC31D009CF844 /* PDFSearchingModule */ = {
 			isa = PBXGroup;
 			children = (
 				F10E46422ADBF5D000DC4CC7 /* SearchReducer.swift */,
 				F10E463A2ADBF4FA00DC4CC7 /* SearchResultsView.swift */,
 			);
-			path = PDWSearchingModule;
+			path = PDFSearchingModule;
 			sourceTree = "<group>";
 		};
 		CE43502C2ADD6B9300AB762D /* PDFLoaderModule */ = {
@@ -320,7 +295,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE0CD77E2ADBEF0100DE4B72 /* PDFViewerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,8 +302,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE0CD7882ADBEF0100DE4B72 /* PDFViewerUITests.swift in Sources */,
-				CE0CD78A2ADBEF0100DE4B72 /* PDFViewerUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
