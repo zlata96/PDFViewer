@@ -16,6 +16,7 @@
 		F10E46432ADBF5D000DC4CC7 /* SearchReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10E46422ADBF5D000DC4CC7 /* SearchReducer.swift */; };
 		F10E46462ADBF64800DC4CC7 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = F10E46452ADBF64800DC4CC7 /* ComposableArchitecture */; };
 		F10E46482ADBF9C900DC4CC7 /* test.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F10E46472ADBF9C900DC4CC7 /* test.pdf */; };
+		F1C8D2892ADEE378009E7D34 /* PDFSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C8D2882ADEE378009E7D34 /* PDFSearchResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		F10E463C2ADBF56500DC4CC7 /* PDFViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewWrapper.swift; sourceTree = "<group>"; };
 		F10E46422ADBF5D000DC4CC7 /* SearchReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchReducer.swift; sourceTree = "<group>"; };
 		F10E46472ADBF9C900DC4CC7 /* test.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = test.pdf; sourceTree = "<group>"; };
+		F1C8D2882ADEE378009E7D34 /* PDFSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFSearchResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				CE0CD76C2ADBEEFD00DE4B72 /* PDFViewerApp.swift */,
 				CE43502C2ADD6B9300AB762D /* MainModule */,
 				CE3D72102ADEC31D009CF844 /* SearchingModule */,
+				F1C8D2872ADEE36B009E7D34 /* Helpers */,
 				CE0CD7702ADBEF0000DE4B72 /* Assets.xcassets */,
 				F10E46472ADBF9C900DC4CC7 /* test.pdf */,
 			);
@@ -119,9 +122,17 @@
 			children = (
 				CE0CD76E2ADBEEFD00DE4B72 /* MainView.swift */,
 				CE3D720E2ADEC26C009CF844 /* MainReducer.swift */,
-				F10E463C2ADBF56500DC4CC7 /* PDFViewWrapper.swift */,
 			);
 			path = MainModule;
+			sourceTree = "<group>";
+		};
+		F1C8D2872ADEE36B009E7D34 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F10E463C2ADBF56500DC4CC7 /* PDFViewWrapper.swift */,
+				F1C8D2882ADEE378009E7D34 /* PDFSearchResult.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,6 +295,7 @@
 			files = (
 				CE0CD76F2ADBEEFD00DE4B72 /* MainView.swift in Sources */,
 				F10E46432ADBF5D000DC4CC7 /* SearchReducer.swift in Sources */,
+				F1C8D2892ADEE378009E7D34 /* PDFSearchResult.swift in Sources */,
 				CE3D720F2ADEC26C009CF844 /* MainReducer.swift in Sources */,
 				F10E463D2ADBF56500DC4CC7 /* PDFViewWrapper.swift in Sources */,
 				F10E463B2ADBF4FA00DC4CC7 /* SearchView.swift in Sources */,

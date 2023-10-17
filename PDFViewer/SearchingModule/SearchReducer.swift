@@ -20,18 +20,14 @@ struct SearchReducer: Reducer {
     enum Action: Equatable {
         case updateSearchText(String)
         case beginSearch
-        case appendSearchResult(PDFSearchResult)
+        case appendSearchResults([PDFSearchResult])
         case endSearch
         case clearSearchText
 
         case selectSearchResult(PDFSearchResult)
     }
 
-    struct PDFSearchResult: Equatable, Identifiable {
-        let id = UUID()
-        let pageIndex: Int
-        let thumbnail: UIImage?
-    }
+    enum CancelID { case search }
 
     func reduce(into state: inout State, action: Action) -> Effect<Action> {
         switch action {
@@ -44,28 +40,30 @@ struct SearchReducer: Reducer {
                 return .run { send in
                     await send(.beginSearch)
                 }
-                .cancellable(id: "search")
+                .cancellable(id: CancelID.search)
                 .debounce(id: "search", for: 0.3, scheduler: DispatchQueue.main)
             }
         case .beginSearch:
             state.isSearching = true
             state.searchResults = []
             return searchEffect(for: state.searchText, in: state.pdfDocument)
-        case let .appendSearchResult(result):
-            state.searchResults.append(result)
+                .cancellable(id: CancelID.search)
+        case let .appendSearchResults(results):
+            state.searchResults += results
             return .none
         case .endSearch:
             state.isSearching = false
             return .none
         case .clearSearchText:
             state.isSearchResultsShown = false
+            state.isSearching = false
             state.searchText = ""
             state.searchResults = []
-            return .none
+            return .cancel(id: CancelID.search)
         case let .selectSearchResult(result):
-            state.searchText = ""
-            state.isSearching = false
             state.isSearchResultsShown = false
+            state.isSearching = false
+            state.searchText = ""
             state.currentPageIndex = result.pageIndex
             return .none
         }
@@ -78,17 +76,29 @@ struct SearchReducer: Reducer {
                 return
             }
 
-            // try await Task.sleep(nanoseconds: 1_000_000_000)
+            var startTime = Date()
+
+            var bufferedResults: [PDFSearchResult] = []
 
             for i in 0 ..< document.pageCount {
                 guard let page = document.page(at: i) else { continue }
 
                 if page.string?.contains(query) ?? false {
                     let thumbnail = page.thumbnail(of: CGSize(width: 400, height: 600), for: .cropBox)
-                    await send(.appendSearchResult(PDFSearchResult(pageIndex: i, thumbnail: thumbnail)))
+                    bufferedResults.append(PDFSearchResult(pageIndex: i, thumbnail: thumbnail))
+                }
+
+                let currentTime = Date()
+                if currentTime.timeIntervalSince(startTime) >= 1.0 {
+                    if !bufferedResults.isEmpty {
+                        await send(.appendSearchResults(bufferedResults))
+                        bufferedResults.removeAll()
+                    }
+                    startTime = currentTime
                 }
             }
 
+            await send(.appendSearchResults(bufferedResults))
             await send(.endSearch)
         }
     }

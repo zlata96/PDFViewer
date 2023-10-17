@@ -58,12 +58,13 @@ struct SearchView: View {
                         Text("Найдено \(viewStore.searchResults.count) совпадений")
                             .font(.caption)
                     }
-
                     if viewStore.isSearching {
                         ProgressView()
                             .padding(.leading, 8)
                     }
                 }
+                .frame(height: 10)
+                .padding(.top)
             }
             .padding(.horizontal)
         }
