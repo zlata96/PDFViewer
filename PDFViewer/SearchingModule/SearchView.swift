@@ -1,11 +1,11 @@
-// SearchResultsView.swift
+// SearchView.swift
 // PDFViewer. Created by Zlata Guseva.
 
 import ComposableArchitecture
 import PDFKit
 import SwiftUI
 
-struct SearchContentView: View {
+struct SearchView: View {
     let store: StoreOf<SearchReducer>
 
     var body: some View {
@@ -99,9 +99,9 @@ struct SearchContentView: View {
     }
 }
 
-struct SearchContentView_Previews: PreviewProvider {
+struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchContentView(
+        SearchView(
             store: Store(initialState: SearchReducer.State()) {
                 SearchReducer()
             }

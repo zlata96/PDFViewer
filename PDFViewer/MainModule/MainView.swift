@@ -44,7 +44,7 @@ struct MainView: View {
                             .padding()
                         }
                         .sheet(store: store.scope(state: \.$searchingSheetState, action: MainReducer.Action.searchSheet)) { store in
-                            SearchContentView(store: store)
+                            SearchView(store: store)
                         }
                     }
                 }

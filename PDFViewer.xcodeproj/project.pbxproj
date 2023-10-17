@@ -11,7 +11,7 @@
 		CE0CD76F2ADBEEFD00DE4B72 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CD76E2ADBEEFD00DE4B72 /* MainView.swift */; };
 		CE0CD7712ADBEF0000DE4B72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE0CD7702ADBEF0000DE4B72 /* Assets.xcassets */; };
 		CE3D720F2ADEC26C009CF844 /* MainReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D720E2ADEC26C009CF844 /* MainReducer.swift */; };
-		F10E463B2ADBF4FA00DC4CC7 /* SearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10E463A2ADBF4FA00DC4CC7 /* SearchResultsView.swift */; };
+		F10E463B2ADBF4FA00DC4CC7 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10E463A2ADBF4FA00DC4CC7 /* SearchView.swift */; };
 		F10E463D2ADBF56500DC4CC7 /* PDFViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10E463C2ADBF56500DC4CC7 /* PDFViewWrapper.swift */; };
 		F10E46432ADBF5D000DC4CC7 /* SearchReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10E46422ADBF5D000DC4CC7 /* SearchReducer.swift */; };
 		F10E46462ADBF64800DC4CC7 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = F10E46452ADBF64800DC4CC7 /* ComposableArchitecture */; };
@@ -43,7 +43,7 @@
 		CE0CD7792ADBEF0100DE4B72 /* PDFViewerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PDFViewerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE0CD7832ADBEF0100DE4B72 /* PDFViewerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PDFViewerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE3D720E2ADEC26C009CF844 /* MainReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainReducer.swift; sourceTree = "<group>"; };
-		F10E463A2ADBF4FA00DC4CC7 /* SearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
+		F10E463A2ADBF4FA00DC4CC7 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		F10E463C2ADBF56500DC4CC7 /* PDFViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewWrapper.swift; sourceTree = "<group>"; };
 		F10E46422ADBF5D000DC4CC7 /* SearchReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchReducer.swift; sourceTree = "<group>"; };
 		F10E46472ADBF9C900DC4CC7 /* test.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = test.pdf; sourceTree = "<group>"; };
@@ -108,8 +108,8 @@
 		CE3D72102ADEC31D009CF844 /* SearchingModule */ = {
 			isa = PBXGroup;
 			children = (
+				F10E463A2ADBF4FA00DC4CC7 /* SearchView.swift */,
 				F10E46422ADBF5D000DC4CC7 /* SearchReducer.swift */,
-				F10E463A2ADBF4FA00DC4CC7 /* SearchResultsView.swift */,
 			);
 			path = SearchingModule;
 			sourceTree = "<group>";
@@ -286,7 +286,7 @@
 				F10E46432ADBF5D000DC4CC7 /* SearchReducer.swift in Sources */,
 				CE3D720F2ADEC26C009CF844 /* MainReducer.swift in Sources */,
 				F10E463D2ADBF56500DC4CC7 /* PDFViewWrapper.swift in Sources */,
-				F10E463B2ADBF4FA00DC4CC7 /* SearchResultsView.swift in Sources */,
+				F10E463B2ADBF4FA00DC4CC7 /* SearchView.swift in Sources */,
 				CE0CD76D2ADBEEFD00DE4B72 /* PDFViewerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

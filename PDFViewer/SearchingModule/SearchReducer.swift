@@ -84,7 +84,7 @@ struct SearchReducer: Reducer {
                 guard let page = document.page(at: i) else { continue }
 
                 if page.string?.contains(query) ?? false {
-                    let thumbnail = page.thumbnail(of: CGSize(width: 40, height: 60), for: .cropBox)
+                    let thumbnail = page.thumbnail(of: CGSize(width: 400, height: 600), for: .cropBox)
                     await send(.appendSearchResult(PDFSearchResult(pageIndex: i, thumbnail: thumbnail)))
                 }
             }
