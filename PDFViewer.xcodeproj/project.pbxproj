@@ -105,9 +105,8 @@
 			isa = PBXGroup;
 			children = (
 				CE0CD76C2ADBEEFD00DE4B72 /* PDFViewerApp.swift */,
-				F10E463C2ADBF56500DC4CC7 /* PDFViewWrapper.swift */,
+				CE43502C2ADD6B9300AB762D /* PDFLoaderModule */,
 				F10E46402ADBF5B200DC4CC7 /* AppReducer.swift */,
-				CE0CD76E2ADBEEFD00DE4B72 /* ContentView.swift */,
 				F10E463A2ADBF4FA00DC4CC7 /* SearchResultsView.swift */,
 				F10E46422ADBF5D000DC4CC7 /* SearchReducer.swift */,
 				CE0CD7702ADBEF0000DE4B72 /* Assets.xcassets */,
@@ -131,6 +130,15 @@
 				CE0CD7892ADBEF0100DE4B72 /* PDFViewerUITestsLaunchTests.swift */,
 			);
 			path = PDFViewerUITests;
+			sourceTree = "<group>";
+		};
+		CE43502C2ADD6B9300AB762D /* PDFLoaderModule */ = {
+			isa = PBXGroup;
+			children = (
+				CE0CD76E2ADBEEFD00DE4B72 /* ContentView.swift */,
+				F10E463C2ADBF56500DC4CC7 /* PDFViewWrapper.swift */,
+			);
+			path = PDFLoaderModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
