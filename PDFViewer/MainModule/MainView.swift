@@ -15,9 +15,6 @@ struct MainView: View {
                     if viewStore.pdfDocumentIsLoaded {
                         pdfView
                         searchButtonView
-                            .sheet(store: store.scope(state: \.$searchingSheetState, action: MainReducer.Action.searchSheet)) { store in
-                                SearchView(store: store)
-                            }
                     } else {
                         loadButtonView
                     }
@@ -25,6 +22,9 @@ struct MainView: View {
                 .navigationTitle("PDFViewer")
                 .navigationBarTitleDisplayMode(.inline)
             }
+        }
+        .sheet(store: store.scope(state: \.$searchingSheetState, action: MainReducer.Action.searchSheet)) { store in
+            SearchView(store: store)
         }
     }
 

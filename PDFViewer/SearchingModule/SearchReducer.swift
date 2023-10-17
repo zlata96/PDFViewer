@@ -23,7 +23,6 @@ struct SearchReducer: Reducer {
         case appendSearchResults([PDFSearchResult])
         case endSearch
         case clearSearchText
-
         case selectSearchResult(PDFSearchResult)
     }
 
@@ -33,18 +32,20 @@ struct SearchReducer: Reducer {
         switch action {
         case let .updateSearchText(text):
             if text.isEmpty {
-                return .none
+                return .run { send in
+                    await send(.clearSearchText)
+                }
             } else {
-                state.isSearchResultsShown = true
                 state.searchText = text
                 return .run { send in
                     await send(.beginSearch)
                 }
+                .debounce(id: CancelID.search, for: 0.5, scheduler: DispatchQueue.main)
                 .cancellable(id: CancelID.search)
-                .debounce(id: "search", for: 0.3, scheduler: DispatchQueue.main)
             }
         case .beginSearch:
             state.isSearching = true
+            state.isSearchResultsShown = true
             state.searchResults = []
             return searchEffect(for: state.searchText, in: state.pdfDocument)
                 .cancellable(id: CancelID.search)
@@ -61,11 +62,8 @@ struct SearchReducer: Reducer {
             state.searchResults = []
             return .cancel(id: CancelID.search)
         case let .selectSearchResult(result):
-            state.isSearchResultsShown = false
-            state.isSearching = false
-            state.searchText = ""
             state.currentPageIndex = result.pageIndex
-            return .none
+            return .cancel(id: CancelID.search)
         }
     }
 

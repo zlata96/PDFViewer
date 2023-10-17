@@ -15,7 +15,7 @@ struct SearchView: View {
                     searchBarView
                     searchListView
                 }
-                .navigationTitle("Поиск по документу")
+                .navigationTitle("Поиск")
                 .navigationBarTitleDisplayMode(.inline)
             }
         }
@@ -24,7 +24,7 @@ struct SearchView: View {
     var searchBarView: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             VStack {
-                HStack {
+                HStack { 
                     Image(systemName: "magnifyingglass")
                     TextField(
                         "Введите текст",
