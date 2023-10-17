@@ -28,7 +28,7 @@ struct MainView: View {
         }
     }
 
-    var pdfView: some View {
+    private var pdfView: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             PDFViewWrapper(
                 pdfDocument: viewStore.pdfDocument,
@@ -40,7 +40,7 @@ struct MainView: View {
         }
     }
 
-    var loadButtonView: some View {
+    private var loadButtonView: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             HStack {
                 Button("Загрузить PDF документ") {
@@ -54,7 +54,7 @@ struct MainView: View {
         }
     }
 
-    var searchButtonView: some View {
+    private var searchButtonView: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             VStack {
                 Spacer()

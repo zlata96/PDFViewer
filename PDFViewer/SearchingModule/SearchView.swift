@@ -21,10 +21,10 @@ struct SearchView: View {
         }
     }
 
-    var searchBarView: some View {
+    private var searchBarView: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             VStack {
-                HStack { 
+                HStack {
                     Image(systemName: "magnifyingglass")
                     TextField(
                         "Введите текст",
@@ -68,7 +68,7 @@ struct SearchView: View {
         }
     }
 
-    var searchListView: some View {
+    private var searchListView: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             ScrollView {
                 LazyVGrid(

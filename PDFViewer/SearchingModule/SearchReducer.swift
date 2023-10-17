@@ -26,7 +26,7 @@ struct SearchReducer: Reducer {
         case selectSearchResult(PDFSearchResult)
     }
 
-    enum CancelID { case search }
+    private enum CancelID { case search }
 
     func reduce(into state: inout State, action: Action) -> Effect<Action> {
         switch action {
@@ -67,7 +67,7 @@ struct SearchReducer: Reducer {
         }
     }
 
-    func searchEffect(for query: String, in document: PDFDocument?) -> Effect<Action> {
+    private func searchEffect(for query: String, in document: PDFDocument?) -> Effect<Action> {
         Effect.run { send in
             guard let document else {
                 await send(.endSearch)
