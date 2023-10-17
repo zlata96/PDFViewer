@@ -1,12 +1,12 @@
-// ContentView.swift
+// MainView.swift
 // PDFViewer. Created by Zlata Guseva.
 
 import ComposableArchitecture
 import PDFKit
 import SwiftUI
 
-struct ContentView: View {
-    let store: StoreOf<AppReducer>
+struct MainView: View {
+    let store: StoreOf<MainReducer>
 
     var body: some View {
         NavigationView {
@@ -31,9 +31,8 @@ struct ContentView: View {
                                 viewStore.send(.searchButtonTapped)
                             }) {
                                 HStack {
-                                    Image(systemName: "xmark.circle.fill")
+                                    Image(systemName: "magnifyingglass")
                                         .foregroundColor(.white)
-
                                     Text("Поиск")
                                         .font(.headline)
                                         .foregroundColor(.white)
@@ -44,7 +43,7 @@ struct ContentView: View {
                             .cornerRadius(16)
                             .padding()
                         }
-                        .sheet(store: store.scope(state: \.$searchingSheetState, action: AppReducer.Action.searchSheet)) { store in
+                        .sheet(store: store.scope(state: \.$searchingSheetState, action: MainReducer.Action.searchSheet)) { store in
                             SearchContentView(store: store)
                         }
                     }
@@ -61,18 +60,18 @@ struct ContentView: View {
                 pdfDocument: viewStore.pdfDocument,
                 currentPageIndex: viewStore.binding(
                     get: { $0.currentPageIndex },
-                    send: AppReducer.Action.searchSheet(.dismiss)
+                    send: MainReducer.Action.searchSheet(.dismiss)
                 )
             )
         }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(
-            store: Store(initialState: AppReducer.State()) {
-                AppReducer()
+        MainView(
+            store: Store(initialState: MainReducer.State()) {
+                MainReducer()
             }
         )
     }

@@ -1,10 +1,10 @@
-// AppReducer.swift
+// MainReducer.swift
 // PDFViewer. Created by Zlata Guseva.
 
 import ComposableArchitecture
 import PDFKit
 
-struct AppReducer: Reducer {
+struct MainReducer: Reducer {
     struct State: Equatable {
         var pdfDocument: PDFDocument?
         var pdfDocumentIsLoading = false
@@ -23,7 +23,7 @@ struct AppReducer: Reducer {
         case searchSheet(PresentationAction<SearchReducer.Action>)
     }
 
-    var body: some ReducerOf<AppReducer> {
+    var body: some ReducerOf<MainReducer> {
         Reduce { state, action in
             switch action {
             case .pdfLoadingStarted:

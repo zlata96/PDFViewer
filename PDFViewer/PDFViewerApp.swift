@@ -8,8 +8,8 @@ import SwiftUI
 struct PDFViewerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(store: Store(initialState: AppReducer.State()) {
-                AppReducer()
+            MainView(store: Store(initialState: MainReducer.State()) {
+                MainReducer()
                     ._printChanges()
             }
             )
