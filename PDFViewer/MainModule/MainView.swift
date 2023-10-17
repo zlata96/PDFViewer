@@ -9,43 +9,17 @@ struct MainView: View {
     let store: StoreOf<MainReducer>
 
     var body: some View {
-        NavigationView {
-            WithViewStore(store, observe: { $0 }) { viewStore in
+        WithViewStore(store, observe: { $0 }) { viewStore in
+            NavigationView {
                 ZStack {
-                    pdfView
-                    if !viewStore.pdfDocumentIsLoaded {
-                        HStack {
-                            Button("Загрузить PDF документ") {
-                                viewStore.send(.pdfLoadingStarted)
-                            }
-                            .padding()
-                            if viewStore.pdfDocumentIsLoading {
-                                ProgressView()
-                            }
-                        }
-                    }
                     if viewStore.pdfDocumentIsLoaded {
-                        VStack {
-                            Spacer()
-                            Button(action: {
-                                viewStore.send(.searchButtonTapped)
-                            }) {
-                                HStack {
-                                    Image(systemName: "magnifyingglass")
-                                        .foregroundColor(.white)
-                                    Text("Поиск")
-                                        .font(.headline)
-                                        .foregroundColor(.white)
-                                }
-                                .padding()
+                        pdfView
+                        searchButtonView
+                            .sheet(store: store.scope(state: \.$searchingSheetState, action: MainReducer.Action.searchSheet)) { store in
+                                SearchView(store: store)
                             }
-                            .background(Color.gray)
-                            .cornerRadius(16)
-                            .padding()
-                        }
-                        .sheet(store: store.scope(state: \.$searchingSheetState, action: MainReducer.Action.searchSheet)) { store in
-                            SearchView(store: store)
-                        }
+                    } else {
+                        loadButtonView
                     }
                 }
                 .navigationTitle("PDFViewer")
@@ -63,6 +37,43 @@ struct MainView: View {
                     send: MainReducer.Action.searchSheet(.dismiss)
                 )
             )
+        }
+    }
+
+    var loadButtonView: some View {
+        WithViewStore(store, observe: { $0 }) { viewStore in
+            HStack {
+                Button("Загрузить PDF документ") {
+                    viewStore.send(.pdfLoadingStarted)
+                }
+                .padding()
+                if viewStore.pdfDocumentIsLoading {
+                    ProgressView()
+                }
+            }
+        }
+    }
+
+    var searchButtonView: some View {
+        WithViewStore(store, observe: { $0 }) { viewStore in
+            VStack {
+                Spacer()
+                Button(action: {
+                    viewStore.send(.searchButtonTapped)
+                }) {
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                            .foregroundColor(.white)
+                        Text("Поиск")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                    }
+                    .padding()
+                }
+                .background(Color.gray)
+                .cornerRadius(16)
+                .padding()
+            }
         }
     }
 }

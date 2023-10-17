@@ -9,17 +9,15 @@ struct SearchView: View {
     let store: StoreOf<SearchReducer>
 
     var body: some View {
-        NavigationView {
-            WithViewStore(store, observe: { $0 }) { viewStore in
-                ZStack {
-                    VStack {
-                        searchBarView
-                        searchListView
-                    }
+        WithViewStore(store, observe: { $0 }) { viewStore in
+            NavigationView {
+                VStack {
+                    searchBarView
+                    searchListView
                 }
+                .navigationTitle("Поиск по документу")
+                .navigationBarTitleDisplayMode(.inline)
             }
-            .navigationTitle("Поиск по документу")
-            .navigationBarTitleDisplayMode(.inline)
         }
     }
 
